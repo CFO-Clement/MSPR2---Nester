@@ -1,10 +1,8 @@
-Pour vous guider dans le développement de votre projet, voici un résumé structuré des étapes et des intégrations pour les deux parties principales de votre application : le Nester (interface Admin) et l'Harvester (client).
-
-### Le Nester (Interface Admin)
+# Le Nester (Interface Admin)
 
 **Objectif** : Créer une interface d'administration robuste qui permet de visualiser des métriques, de gérer des tickets et de contrôler les opérations à distance.
 
-#### Étapes de développement :
+## Étapes de développement :
 
 1. **Intégration de Grafana pour le monitoring visuel** :
    - Installer et configurer Grafana.
