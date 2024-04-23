@@ -1,6 +1,6 @@
 ---
 - name: Setup noVNC environment on the central server
-  hosts: central_server
+  hosts: localhost
   become: yes
   tasks:
     - name: Install git and python3
