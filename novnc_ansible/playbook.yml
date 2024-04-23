@@ -1,0 +1,45 @@
+---
+- name: Setup noVNC environment on the central server
+  hosts: central_server
+  become: yes
+  tasks:
+    - name: Install git and python3
+      apt:
+        name:
+          - git
+          - python3
+        state: latest
+
+    - name: Clone noVNC from GitHub
+      git:
+        repo: 'https://github.com/novnc/noVNC.git'
+        dest: /opt/noVNC
+        version: master
+        clone: yes
+        update: yes
+
+    - name: Copy noVNC startup script
+      copy:
+        src: files/start_novnc.sh
+        dest: /usr/local/bin/start_novnc.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy noVNC systemd service file
+      copy:
+        src: files/novnc.service
+        dest: /etc/systemd/system/novnc.service
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Reload systemd to recognize new noVNC service
+      systemd:
+        daemon_reload: yes
+
+    - name: Enable and start noVNC service
+      systemd:
+        name: novnc
+        enabled: yes
+        state: started
