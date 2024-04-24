@@ -1,5 +1,5 @@
 [Unit]
-Description=noVNC Web Access Console
+Description=Nester Flask webapp
 After=network.target
 
 [Service]
