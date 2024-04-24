@@ -7,7 +7,7 @@ start_compose() {
 
 start_docker() {
     echo "Démarrage des conteneurs avec Docker..."
-    sudo docker run -d --name nester nester_image
+    sudo docker run -d --name nester -p 5000:5000 -p 8080:8080 nester_image
 }
 
 if [ "$#" -gt 0 ]; then
