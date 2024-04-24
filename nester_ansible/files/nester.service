@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/bash /opt/noVNC/utils/novnc_proxy
+ExecStart=/usr/bin/bash /opt/nester/start.sh docker
 Restart=always
 RestartSec=2
 

@@ -18,14 +18,6 @@
         clone: yes
         update: yes
 
-    - name: Copy noVNC startup script
-      copy:
-        src: files/start_novnc.sh
-        dest: /usr/local/bin/start_novnc.sh
-        owner: root
-        group: root
-        mode: '0755'
-
     - name: Copy noVNC systemd service file
       copy:
         src: files/novnc.service
