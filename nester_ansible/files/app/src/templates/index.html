@@ -42,6 +42,7 @@
                     <th>Send Heartbeat</th>
                     <th>NMAP</th>
                     <th>VNC</th>
+                    <th>SSH</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,6 +57,7 @@
                     <td><a class="btn heartbeat-btn" href="{{ url_for('send_heartbeat', client_id=client.id) }}">Send Heartbeat</a></td>
                     <td><a class="btn nmap-btn" href="{{ url_for('node_nmap', client_id=client.id) }}">NMAP</a></td>
                     <td><button onclick="openVNC('{{ client.ip }}')">Open VNC</button></td>
+                    <td><button onclick="openSSH('{{ client.ip }}')">Open SSH</button></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -67,6 +69,12 @@
     <script>
         function openVNC(ip) {
           var url = `http://192.168.122.17:6080/vnc.html?host=${ip}&port=6082`;
+          window.open(url, '_blank', 'height=600,width=800');
+        }
+    </script>
+    <script>
+        function openSSH(ip) {
+          var url = `https://${ip}:6175/vnc.html`;
           window.open(url, '_blank', 'height=600,width=800');
         }
     </script>
