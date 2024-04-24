@@ -41,6 +41,7 @@
                     <th>Details</th>
                     <th>Send Heartbeat</th>
                     <th>NMAP</th>
+                    <th>VNC</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +55,7 @@
                     <td><a class="btn btn-info" href="{{ url_for('node_detail', client_id=client.id) }}">View Details</a></td>
                     <td><a class="btn heartbeat-btn" href="{{ url_for('send_heartbeat', client_id=client.id) }}">Send Heartbeat</a></td>
                     <td><a class="btn nmap-btn" href="{{ url_for('node_nmap', client_id=client.id) }}">NMAP</a></td>
+                    <td><button onclick="openVNC('{{ client.ip }}')">Open VNC</button></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -62,5 +64,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function openVNC(ip) {
+          var url = `http://192.168.122.17:8060/vnc.html?host=${ip}&port=6082`;
+          window.open(url, '_blank', 'height=600,width=800');
+        }
+    </script>
 </body>
 </html>
